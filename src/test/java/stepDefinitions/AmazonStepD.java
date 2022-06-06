@@ -59,4 +59,40 @@ public class AmazonStepD {
         String actualKelime = amazonPage.aramaSonucElementi.getText();
         Assert.assertTrue(actualKelime.contains(arananKelime));
     }
+
+    @And("kullanıcı {string} için arama yapar")
+    public void kullanıcıIçinAramaYapar(String istenenKelime) {
+        amazonPage.aramaKutusu.sendKeys(istenenKelime + Keys.ENTER);
+    }
+
+    @And("sonucların {string} içerdiği test eder")
+    public void sonuclarınIçerdiğiTestEder(String istenenKelime) {
+        String arananKelime = istenenKelime;
+        String actualKelime = amazonPage.aramaSonucElementi.getText();
+        Assert.assertTrue(actualKelime.contains(arananKelime));
+    }
+
+    @Given("kullanıcı {string} anasayfasında") // amazonURL
+    public void kullanıcıAnasayfasında(String istenenURL) {
+        Driver.getDriver().get(ConfigReader.getProperty(istenenURL));
+    }
+
+
+    @And("url'in {string} içerdiğini test eder")
+    public void urlInIçerdiğiniTestEder(String istenenKelime) {
+        String actualURL = Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(actualURL.contains(istenenKelime));
+
+    }
+
+
+    @Then("kullanıcı {int} saniye bekler")
+    public void kullanıcıSaniyeBekler(int istenenBeklemeSuresi) throws InterruptedException {
+        try {
+            Thread.sleep(istenenBeklemeSuresi*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
