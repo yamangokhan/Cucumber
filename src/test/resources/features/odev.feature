@@ -1,31 +1,32 @@
-Feature:
+Feature:The user goes relative URL and create some informations and controls
 
-  Scenario Outline:
+  @gokhan
+  Scenario Outline: US_006 Kullanıcı ilgili sayfaya gider ve işlemleri yapar
 
-When kullanici "https://editor.datatables.net/" adresine gider
-Then new butonuna basar
-And tum bilgileri girer
-And Create tusuna basar
-When kullanici ilk isim ile arama yapar
-Then isim bolumunde isminin oldugunu dogrular
+    When kullanıcı "dataTableURL" anasayfasında
+    Then new butonuna basar
+    And kullanıcı isim bölümüne "<firstName>" bilgisi girer
+
+    And kullanıcı soyisim bölümüne "<lastName>" bilgisi girer
+
+    And kullanıcı position bölümüne "<position>" bilgisi girer
+
+    And kullanıcı office bölümüne  "<office>" bilgisi girer
+
+    And kullanıcı extn bölümüne "<extn>" bilgisi girer
+
+    And kullanıcı start date bölümüne "<startDate>" bilgisi girer
+
+    And kullanıcı salary bölümüne "<salary>" bilgisi girer
+
+    And Create tusuna basar
+
+    When kullanici "<firstName>" ile arama yapar
+
+    Then isim bolumunde "<firstName>" oldugunu test eder
+
     Examples:
-      |  |
-   # //span[contains(text(),'New')]
+      | firstName | lastName | position | office | extn | startDate  | salary |
+      | gokhan    | yaman    | QA       | Amazon | -    | 2022-05-10 | 15000  |
 
-  # //input[@id='DTE_Field_first_name']
 
-  # //input[@id='DTE_Field_last_name']
-
-  # //input[@id='DTE_Field_position']
-
-  # //input[@id='DTE_Field_office']
-
-  # //input[@id='DTE_Field_extn']
-
-  # //input[@id='DTE_Field_start_date']
-
-  # //input[@id='DTE_Field_salary']
-
-  # //button[contains(text(),'Create')]
-
-  #//input[@type='search']
