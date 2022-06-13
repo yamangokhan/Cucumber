@@ -17,4 +17,7 @@ public class AddElement {
     @FindBy(xpath = "//button[contains(text(),'Delete')]")
     public WebElement deleteButton;
 
+    @FindBy (xpath = "")
+    WebElement xyz;
+
 }
